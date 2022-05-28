@@ -1,0 +1,9 @@
+name: RPGSharpStarterKit
+version: '${version}'
+main: com.binggre.rpgsharpstarterkit.RPGSharpStarterKit
+api-version: 1.13
+authors: [ binggre ]
+depend:
+  - RpgSharp
+commands:
+  기본아이템:
