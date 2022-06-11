@@ -3,8 +3,8 @@ package com.binggre.rpgsharpstarterkit.command;
 import com.binggre.rpgsharpstarterkit.guis.StarterKitGUI;
 import com.binggre.rpgsharpstarterkit.objects.StarterKit;
 import com.binggre.rpgsharpstarterkit.objects.StarterKitLoader;
-import com.hj.rpgsharp.rpg.apis.rpgsharp.RPGPlayerAPI;
-import com.hj.rpgsharp.rpg.apis.utils.MetadataUtil;
+import com.hj.rpgsharp.rpg.apis.rpgsharp.RPGSharpAPI;
+import com.hj.rpgsharp.rpg.apis.rpgsharp.utils.MetadataUtil;
 import com.hj.rpgsharp.rpg.objects.RPGPlayer;
 import com.hj.rpgsharp.rpg.plugins.character.objects.JobLoader;
 import org.bukkit.Bukkit;
@@ -45,12 +45,12 @@ public class StarterKitCommand implements CommandExecutor {
                     sender.sendMessage("존재하지 않는 직업입니다.");
                     break;
                 }
-                MetadataUtil.setMetadata(player, "StarterKit", jobName);
                 if (!StarterKitLoader.containsKey(jobName)) {
                     Inventory inventory = Bukkit.createInventory(null, (6 * 9), "기본 아이템 설정");
                     player.openInventory(inventory);
                     break;
                 }
+                MetadataUtil.setMetadata(player, "StarterKit", jobName);
                 StarterKitGUI.openInventory(player, jobName);
                 break;
             }
@@ -116,7 +116,7 @@ public class StarterKitCommand implements CommandExecutor {
                     sender.sendMessage("/기본아이템 지급 <닉네임> <직업명> - 기본 아이템을 지급합니다.");
                     break;
                 }
-                RPGPlayer rpgPlayer = RPGPlayerAPI.getInstance().getRPGPlayer((Object) args[1]);
+                RPGPlayer rpgPlayer = RPGSharpAPI.getRPGPlayerAPI().getRPGPlayer((Object) args[1]);
                 if (rpgPlayer == null) {
                     sender.sendMessage("접속중이지 않은 플레이어입니다.");
                     break;

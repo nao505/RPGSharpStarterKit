@@ -3,7 +3,7 @@ package com.binggre.rpgsharpstarterkit.listeners;
 import com.binggre.rpgsharpstarterkit.io.StarterKitWriter;
 import com.binggre.rpgsharpstarterkit.objects.StarterKit;
 import com.binggre.rpgsharpstarterkit.objects.StarterKitLoader;
-import com.hj.rpgsharp.rpg.apis.utils.MetadataUtil;
+import com.hj.rpgsharp.rpg.apis.rpgsharp.utils.MetadataUtil;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
