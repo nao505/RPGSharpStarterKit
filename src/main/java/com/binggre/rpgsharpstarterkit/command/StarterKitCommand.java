@@ -45,12 +45,12 @@ public class StarterKitCommand implements CommandExecutor {
                     sender.sendMessage("존재하지 않는 직업입니다.");
                     break;
                 }
+                MetadataUtil.setMetadata(player, "StarterKit", jobName);
                 if (!StarterKitLoader.containsKey(jobName)) {
-                    Inventory inventory = Bukkit.createInventory(null, (6 * 9), "기본 아이템 설정");
+                    Inventory inventory = Bukkit.createInventory(null, (6 * 9), jobName + "직업 기본 아이템 설정");
                     player.openInventory(inventory);
                     break;
                 }
-                MetadataUtil.setMetadata(player, "StarterKit", jobName);
                 StarterKitGUI.openInventory(player, jobName);
                 break;
             }

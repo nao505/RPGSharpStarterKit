@@ -28,16 +28,16 @@ public class InventoryCloseListener implements Listener {
         Inventory inventory = event.getInventory();
 
         List<ItemStack> itemList = new ArrayList<>();
-        int size = 0;
         for (ItemStack itemStack : inventory.getContents()) {
             if (itemStack == null || itemStack.getType() == Material.AIR) continue;
             itemList.add(itemStack);
-            size ++;
         }
-        if (size == 0) {
-            return;
-        }
-        StarterKit kit = new StarterKit(jobName, new ArrayList<>(), itemList);
+        StarterKit kit = (StarterKitLoader.containsKey(jobName)) ?
+                StarterKitLoader.get(jobName)
+                :
+                new StarterKit(jobName, new ArrayList<>(), itemList);
+        kit.getItemList().clear();
+        kit.getItemList().addAll(itemList);
         StarterKitLoader.put(kit);
         StarterKitWriter.write(kit);
         player.sendMessage(kit.getJobName() + "직업의 아이템이 설정되었습니다.");

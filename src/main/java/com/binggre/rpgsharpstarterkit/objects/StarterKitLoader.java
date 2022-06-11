@@ -12,6 +12,7 @@ public class StarterKitLoader {
     }
 
     public static void put(StarterKit starterKit) {
+        System.out.println("ㅇㅇ");
         getMap().put(starterKit.getJobName(), starterKit);
     }
 
